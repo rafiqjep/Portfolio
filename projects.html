@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Rafiq bin Jefri | Projects</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">MR</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>My Projects</h1>
+      <p>Click a project to see the details</p>
+    </section>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-filter="all">All</button>
+      <button class="tab-btn" data-filter="electronics">Electronics</button>
+      <button class="tab-btn" data-filter="programming">Programming</button>
+      <button class="tab-btn" data-filter="web">Web</button>
+    </div>
+
+    <div class="project-grid">
+      <article class="project-card"
+        data-category="electronics"
+        data-title="Smart Home Light Controller"
+        data-problem="Lights in the house were often left on when no one was in the room."
+        data-role="Designed the circuit and wrote the Arduino code."
+        data-tools="Arduino, PIR sensor, relay module"
+        data-outcome="Automatic lights that switch off after 2 minutes without motion."
+        data-link="https://github.com/rafiqjep">
+        <div class="project-thumb thumb-1">⚡</div>
+        <div class="project-body">
+          <h3>Smart Home Light Controller</h3>
+          <p>Motion-based lighting system using Arduino.</p>
+          <span class="tag">Electronics</span>
+        </div>
+      </article>
+
+      <article class="project-card"
+        data-category="programming"
+        data-title="Traffic Light Simulator"
+        data-problem="Students needed a visual way to understand traffic light sequencing."
+        data-role="Wrote the program logic and the display."
+        data-tools="[Tulis bahasa pengaturcaraan anda]"
+        data-outcome="[Tulis hasil projek anda]"
+        data-link="https://github.com/rafiqjep">
+        <div class="project-thumb thumb-2">💻</div>
+        <div class="project-body">
+          <h3>Traffic Light Simulator</h3>
+          <p>A program that simulates traffic light timing and states.</p>
+          <span class="tag">Programming</span>
+        </div>
+      </article>
+
+      <article class="project-card"
+        data-category="web"
+        data-title="Personal Portfolio Website"
+        data-problem="I needed an online profile to showcase my skills to employers."
+        data-role="Designed and built the full website with HTML, CSS and JavaScript."
+        data-tools="HTML5, CSS3, JavaScript, Git, GitHub Pages"
+        data-outcome="A responsive, multi-page website with dark mode and form validation."
+        data-link="https://rafiqjep.github.io/Portfolio/">
+        <div class="project-thumb thumb-3">🌐</div>
+        <div class="project-body">
+          <h3>Personal Portfolio Website</h3>
+          <p>This website, built from scratch with no templates.</p>
+          <span class="tag">Web</span>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Project details modal -->
+  <div class="modal hidden" id="projectModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <p><strong>Problem:</strong> <span id="modalProblem"></span></p>
+      <p><strong>My role:</strong> <span id="modalRole"></span></p>
+      <p><strong>Tools used:</strong> <span id="modalTools"></span></p>
+      <p><strong>Outcome:</strong> <span id="modalOutcome"></span></p>
+      <p><a id="modalLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">View Project</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Muhammad Rafiq bin Jefri. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
