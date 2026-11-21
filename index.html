@@ -3,31 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muhammad rafiq bin jefri | Home</title>
+  <title>Muhammad Rafiq bin Jefri | Home</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="skills.html">Skills</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
+    <nav class="navbar">
+      <a href="index.html" class="logo">MR</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <h1>Muhammad rafiq bin jefri</h1>
-      <p id="greeting"></p>
-      <p>Aspiring Industrial Electronics Technologist</p>
-      <p>Degree student/BTech in UMPSA. i like to learn about technology</p>
+      <div class="avatar">MR</div>
+      <h1>Muhammad Rafiq bin Jefri</h1>
+      <p class="typing-text"><span id="typing"></span></p>
+      <p class="greeting" id="greeting"></p>
+      <p class="intro">
+        Degree student in Electronics at UMPSA, passionate about building
+        useful systems and web applications that solve real problems.
+      </p>
+      <div class="cta">
+        <a href="projects.html" class="btn btn-primary">View My Work</a>
+        <a href="docs/resume.pdf" class="btn btn-outline" download>Download CV</a>
+      </div>
+    </section>
+
+    <section class="highlights">
+      <div class="highlight-card">
+        <h2>3+</h2>
+        <p>Projects</p>
+      </div>
+      <div class="highlight-card">
+        <h2>1</h2>
+        <p>Certificates</p>
+      </div>
+      <div class="highlight-card">
+        <h2>3</h2>
+        <p>Years of Study</p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> Muhammad rafiq bin jefri</p>
+    <p>&copy; <span id="year"></span> Muhammad Rafiq bin Jefri. All rights reserved.</p>
   </footer>
 
   <script src="js/script.js"></script>
