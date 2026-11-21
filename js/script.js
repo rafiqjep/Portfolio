@@ -152,6 +152,12 @@ if (modal) {
 
   projectCards.forEach((card) => {
     card.addEventListener("click", () => {
+      // Links starting with # scroll to a section on this page instead of opening the popup
+      if (card.dataset.link.startsWith("#")) {
+        document.querySelector(card.dataset.link).scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
       modalTitle.textContent = card.dataset.title;
       modalProblem.textContent = card.dataset.problem;
       modalRole.textContent = card.dataset.role;
@@ -236,4 +242,207 @@ if (contactForm) {
       document.getElementById(rule.id + "Error").textContent = "";
     });
   });
+}
+
+// ===== 10. Interactive web calculator (projects page) =====
+const calcGrid = document.querySelector(".calc-grid");
+const calcExpressionEl = document.getElementById("calcExpression");
+const calcResultEl = document.getElementById("calcResult");
+
+if (calcGrid && calcExpressionEl && calcResultEl) {
+  let expression = "";
+  const MAX_LENGTH = 20;
+  const OPERATORS = ["+", "-", "*", "/"];
+  const SYMBOLS = { "*": "×", "/": "÷", "-": "−", "+": "+" };
+
+  const isOperator = (ch) => OPERATORS.includes(ch);
+
+  // Format a number without floating-point noise and without scientific notation
+  const formatNumber = (n) =>
+    parseFloat(n.toFixed(10)).toLocaleString("en-US", {
+      maximumFractionDigits: 10,
+      useGrouping: false
+    });
+
+  // Evaluate the expression. Returns a number, an error message, or null if empty.
+  // Multiplication and division are done first, then addition and subtraction.
+  const evaluate = (expr) => {
+    // Remove a trailing operator or decimal point so the live result still works
+    const text = expr.replace(/[+\-*/]+$/, "").replace(/\.$/, "");
+    if (text === "") return null;
+
+    const tokens = text.match(/\d+\.?\d*|\.\d+|[+\-*/]/g) || [];
+
+    // Handle a leading minus sign (negative first number)
+    if (tokens[0] === "-") {
+      tokens[1] = "-" + tokens[1];
+      tokens.shift();
+    }
+
+    // Pass 1: multiplication and division
+    const nums = [parseFloat(tokens[0])];
+    const adds = [];
+
+    for (let i = 1; i < tokens.length; i += 2) {
+      const op = tokens[i];
+      const n = parseFloat(tokens[i + 1]);
+
+      if (op === "*") {
+        nums[nums.length - 1] *= n;
+      } else if (op === "/") {
+        if (n === 0) return "Cannot divide by zero";
+        nums[nums.length - 1] /= n;
+      } else {
+        adds.push(op);
+        nums.push(n);
+      }
+    }
+
+    // Pass 2: addition and subtraction
+    let result = nums[0];
+    adds.forEach((op, idx) => {
+      result = op === "+" ? result + nums[idx + 1] : result - nums[idx + 1];
+    });
+
+    return result;
+  };
+
+  // Show the expression and the live result
+  const render = () => {
+    calcExpressionEl.textContent = expression
+      .split("")
+      .map((ch) => SYMBOLS[ch] || ch)
+      .join("");
+
+    if (expression === "") {
+      calcResultEl.textContent = "0";
+      calcResultEl.classList.remove("error");
+      return;
+    }
+
+    const value = evaluate(expression);
+
+    if (value === null) {
+      calcResultEl.textContent = "0";
+      calcResultEl.classList.remove("error");
+    } else if (typeof value === "string") {
+      calcResultEl.textContent = value;
+      calcResultEl.classList.add("error");
+    } else {
+      calcResultEl.textContent = formatNumber(value);
+      calcResultEl.classList.remove("error");
+    }
+  };
+
+  // Add a digit or decimal point
+  const addDigit = (d) => {
+    if (expression.length >= MAX_LENGTH) return;
+
+    const lastNumber = expression.split(/[+\-*/]/).pop();
+
+    // Only one decimal point per number
+    if (d === "." && lastNumber.includes(".")) return;
+
+    // Start with "0." when a decimal point comes first
+    if (d === "." && lastNumber === "") {
+      expression += "0";
+    }
+
+    // Avoid leading zeros such as 007
+    if (lastNumber === "0" && d !== ".") {
+      expression = expression.slice(0, -1);
+    }
+
+    expression += d;
+    render();
+  };
+
+  // Add an operator. A new operator replaces the previous one.
+  const addOperator = (op) => {
+    if (expression === "") return;   // No operator at the start
+    if (expression === "-") return;  // Only a single minus at the start is allowed
+
+    const last = expression.slice(-1);
+
+    if (isOperator(last)) {
+      expression = expression.slice(0, -1) + op;
+    } else {
+      if (expression.length >= MAX_LENGTH) return;
+      expression += op;
+    }
+    render();
+  };
+
+  // Allow a leading minus for negative numbers
+  const addMinusAtStart = () => {
+    if (expression === "") {
+      expression = "-";
+      render();
+    }
+  };
+
+  const backspace = () => {
+    expression = expression.slice(0, -1);
+    render();
+  };
+
+  const clearAll = () => {
+    expression = "";
+    render();
+  };
+
+  const calculate = () => {
+    const value = evaluate(expression);
+    if (value === null) return;
+
+    if (typeof value === "string") {
+      calcResultEl.textContent = value;
+      calcResultEl.classList.add("error");
+      return;
+    }
+
+    // Replace the expression with the result so the user can keep calculating
+    expression = formatNumber(value);
+    render();
+  };
+
+  // Button clicks (event delegation: one listener for all buttons)
+  calcGrid.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+
+    if (btn.dataset.action === "clear") return clearAll();
+    if (btn.dataset.action === "backspace") return backspace();
+    if (btn.dataset.action === "equals") return calculate();
+
+    const value = btn.dataset.value;
+    if (value === "-" && expression === "") {
+      addMinusAtStart();
+    } else if (/^[0-9.]$/.test(value)) {
+      addDigit(value);
+    } else {
+      addOperator(value);
+    }
+  });
+
+  // Keyboard support
+  document.addEventListener("keydown", (e) => {
+    if (/^[0-9]$/.test(e.key) || e.key === ".") {
+      addDigit(e.key);
+    } else if (e.key === "-" && expression === "") {
+      addMinusAtStart();
+    } else if (["+", "-", "*", "/"].includes(e.key)) {
+      if (e.key === "/") e.preventDefault();
+      addOperator(e.key);
+    } else if (e.key === "Enter" || e.key === "=") {
+      e.preventDefault();
+      calculate();
+    } else if (e.key === "Backspace") {
+      backspace();
+    } else if (e.key === "Escape") {
+      clearAll();
+    }
+  });
+
+  render();
 }
