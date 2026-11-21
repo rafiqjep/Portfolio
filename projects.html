@@ -85,36 +85,36 @@
       </article>
 
       <article class="project-card"
-  data-category="web"
-  data-title="Interactive Web Calculator"
-  data-problem="I wanted to create a simple web-based calculator that could perform basic arithmetic operations and be used interactively."
-  data-role="built the interface simple and intuitive, and implemented the calculator logic using JavaScript."
-  data-tools="spread sheet, datastudio, JavaScript"
-  data-outcome="a calculator that simple and easy to use"
-  data-link="https://rafiqjep.github.io/Portfolio/calculator.html">
-  <div class="project-thumb thumb-5">🧮</div>
-  <div class="project-body">
-    <h3>Interactive Web Calculator</h3>
-    <p>a calculator that follow the client requirements simple and easy to use</p>
-    <span class="tag">Web</span>
-  </div>
-</article>
+        data-category="web"
+        data-title="Interactive Web Calculator"
+        data-problem="I wanted to create a simple web-based calculator that could perform basic arithmetic operations and be used interactively."
+        data-role="built the interface simple and intuitive, and implemented the calculator logic using JavaScript."
+        data-tools="spread sheet, datastudio, JavaScript"
+        data-outcome="a calculator that simple and easy to use"
+        data-link="https://rafiqjep.github.io/Portfolio/calculator.html">
+        <div class="project-thumb thumb-5">🧮</div>
+        <div class="project-body">
+          <h3>Interactive Web Calculator</h3>
+          <p>a calculator that follow the client requirements simple and easy to use</p>
+          <span class="tag">Web</span>
+        </div>
+      </article>
 
-    <article class="project-card"
-  data-category="iot"
-  data-title="Real Time Temperature and Humidity Monitoring System"
-  data-problem="Temperature and humidity readings need to be collected automatically over time, not checked manually, so the data can be stored and viewed as a dashboard."
-  data-role="Group project with two teammates (Muhammad Irffan Hakimi and Muhammad Noraalif) for BVI 3114 Lab 3. My part: [tulis bahagian anda sendiri, contoh: sambungan sensor atau kod ESP32 yang saya faham dan uji]."
-  data-tools="ESP32, Grove DHT11 sensor, Arduino IDE, ArduinoJson, Google Apps Script, Google Sheets, Looker Studio, Android WebView app"
-  data-outcome="The ESP32 reads temperature and humidity every 10 minutes and sends them over Wi-Fi to Google Sheets. The data is shown on a Looker Studio dashboard, which the Android app displays in an emulator."
-  data-link="[pautan repo GitHub projek ini, jika ada]">
-  <div class="project-thumb thumb-2">🌡️</div>
-  <div class="project-body">
-    <h3>Real Time Temperature and Humidity Monitoring System</h3>
-    <p>An ESP32 and DHT11 system that sends live sensor readings to Google Sheets and a Looker Studio dashboard.</p>
-    <span class="tag">IoT</span>
-  </div>
-</article>
+      <article class="project-card"
+        data-category="iot"
+        data-title="Real Time Temperature and Humidity Monitoring System"
+        data-problem="Temperature and humidity readings need to be collected automatically over time, not checked manually, so the data can be stored and viewed as a dashboard."
+        data-role="Group project with two teammates (Muhammad Irffan Hakimi and Muhammad Noraalif) for BVI 3114 Lab 3. My part: for the hardware setup and sensor integration."
+        data-tools="ESP32, Grove DHT11 sensor, Arduino IDE, ArduinoJson, Google Apps Script, Google Sheets, Looker Studio, Android WebView app"
+        data-outcome="The ESP32 reads temperature and humidity every 10 minutes and sends them over Wi-Fi to Google Sheets. The data is shown on a Looker Studio dashboard, which the Android app displays in an emulator."
+        data-link="https://github.com/rafiqjep">
+        <div class="project-thumb thumb-2">🌡️</div>
+        <div class="project-body">
+          <h3>Real Time Temperature and Humidity Monitoring System</h3>
+          <p>An ESP32 and DHT11 system that sends live sensor readings to Google Sheets and a Looker Studio dashboard.</p>
+          <span class="tag">IoT</span>
+        </div>
+      </article>
 
       <article class="project-card"
         data-category="web"
@@ -132,6 +132,20 @@
         </div>
       </article>
     </div>
+  </main>
+
+  <!-- Project details modal -->
+  <div class="modal hidden" id="projectModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <p><strong>Problem:</strong> <span id="modalProblem"></span></p>
+      <p><strong>My role:</strong> <span id="modalRole"></span></p>
+      <p><strong>Tools used:</strong> <span id="modalTools"></span></p>
+      <p><strong>Outcome:</strong> <span id="modalOutcome"></span></p>
+      <p><a id="modalLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">View Project</a></p>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; <span id="year"></span> Muhammad Rafiq bin Jefri. All rights reserved.</p>
