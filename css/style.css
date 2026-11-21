@@ -843,3 +843,17 @@ footer {
   object-fit: cover;
   display: block;
 }
+footer .social {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+footer .social a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer .social a:hover {
+  text-decoration: underline;
+}
