@@ -25,61 +25,77 @@
   <main>
     <section class="page-header">
       <h1>My Projects</h1>
-      <p>Click a project to see the details</p>
+      <p>Academic and personal projects. Click a project to see the details.</p>
     </section>
 
     <div class="tabs">
       <button class="tab-btn active" data-filter="all">All</button>
-      <button class="tab-btn" data-filter="electronics">Electronics</button>
-      <button class="tab-btn" data-filter="programming">Programming</button>
+      <button class="tab-btn" data-filter="automation">Automation</button>
+      <button class="tab-btn" data-filter="iot">IoT</button>
       <button class="tab-btn" data-filter="web">Web</button>
     </div>
 
     <div class="project-grid">
       <article class="project-card"
-        data-category="electronics"
-        data-title="Smart Home Light Controller"
-        data-problem="Lights in the house were often left on when no one was in the room."
-        data-role="Designed the circuit and wrote the Arduino code."
-        data-tools="Arduino, PIR sensor, relay module"
-        data-outcome="Automatic lights that switch off after 2 minutes without motion."
+        data-category="automation"
+        data-title="System Integration Design for Hot and Water Mini Plant"
+        data-problem="A mini plant needed one control system that could run its process and show its status clearly to the operator."
+        data-role="Worked on the system integration design, connecting the PLC control logic with the HMI screen."
+        data-tools="Omron PLC (CJ2M CPU31), Wecon HMI, CX-Programmer, GT Designer3"
+        data-outcome="An integrated control and monitoring design for the mini plant, built as a UMPSA academic project."
         data-link="https://github.com/rafiqjep">
-        <div class="project-thumb thumb-1">⚡</div>
+        <div class="project-thumb thumb-1">⚙️</div>
         <div class="project-body">
-          <h3>Smart Home Light Controller</h3>
-          <p>Motion-based lighting system using Arduino.</p>
-          <span class="tag">Electronics</span>
+          <h3>Hot and Water Mini Plant</h3>
+          <p>System integration design for a PLC and HMI controlled mini plant.</p>
+          <span class="tag">Automation</span>
         </div>
       </article>
 
       <article class="project-card"
-        data-category="programming"
-        data-title="Traffic Light Simulator"
-        data-problem="Students needed a visual way to understand traffic light sequencing."
-        data-role="Wrote the program logic and the display."
-        data-tools="[Tulis bahasa pengaturcaraan anda]"
-        data-outcome="[Tulis hasil projek anda]"
+        data-category="iot"
+        data-title="Egg Incubator Monitoring System"
+        data-problem="Egg incubation depends on steady temperature and humidity, and manual checking is inconsistent."
+        data-role="Built the sensor and microcontroller setup to read and monitor incubator conditions for KV Pertanian Chenor, Pahang."
+        data-tools="ESP32, Arduino, BME280 sensor, DS18B20 temperature sensor"
+        data-outcome="A monitoring system that reads the incubator conditions continuously, so they can be checked without opening the incubator."
         data-link="https://github.com/rafiqjep">
-        <div class="project-thumb thumb-2">💻</div>
+        <div class="project-thumb thumb-2">🥚</div>
         <div class="project-body">
-          <h3>Traffic Light Simulator</h3>
-          <p>A program that simulates traffic light timing and states.</p>
-          <span class="tag">Programming</span>
+          <h3>Egg Incubator Monitoring System</h3>
+          <p>Sensor-based monitoring for an egg incubator at KV Pertanian Chenor.</p>
+          <span class="tag">IoT</span>
+        </div>
+      </article>
+
+      <article class="project-card"
+        data-category="automation"
+        data-title="Teaching Factory: Automotive Headlamp Assembly Line"
+        data-problem="A production line needed a clear, sequenced assembly process that could be controlled and monitored."
+        data-role="Took part in the assembly line project, working on the PLC and HMI control of the production process."
+        data-tools="PLC and HMI control [tulis alat yang anda guna]"
+        data-outcome="A working automotive headlamp assembly line built as part of the UMPSA Teaching Factory programme."
+        data-link="https://github.com/rafiqjep">
+        <div class="project-thumb thumb-3">🏭</div>
+        <div class="project-body">
+          <h3>Automotive Headlamp Assembly Line</h3>
+          <p>Teaching Factory production line project at UMPSA.</p>
+          <span class="tag">Automation</span>
         </div>
       </article>
 
       <article class="project-card"
         data-category="web"
         data-title="Personal Portfolio Website"
-        data-problem="I needed an online profile to showcase my skills to employers."
-        data-role="Designed and built the full website with HTML, CSS and JavaScript."
-        data-tools="HTML5, CSS3, JavaScript, Git, GitHub Pages"
-        data-outcome="A responsive, multi-page website with dark mode and form validation."
+        data-problem="I needed an online profile to show my skills and projects to employers and industrial training hosts."
+        data-role="Designed and built the full multi-page website with HTML, CSS and JavaScript, without templates or frameworks."
+        data-tools="HTML5, CSS3, JavaScript, Visual Studio Code, Git, GitHub Pages"
+        data-outcome="A responsive, multi-page website with dark mode, a project filter, a contact form with validation, and a public URL."
         data-link="https://rafiqjep.github.io/Portfolio/">
-        <div class="project-thumb thumb-3">🌐</div>
+        <div class="project-thumb thumb-4">🌐</div>
         <div class="project-body">
           <h3>Personal Portfolio Website</h3>
-          <p>This website, built from scratch with no templates.</p>
+          <p>This website, hand-coded from scratch and published on GitHub Pages.</p>
           <span class="tag">Web</span>
         </div>
       </article>

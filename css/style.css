@@ -129,7 +129,7 @@ main {
   padding: 0 20px;
 }
 
-/* ===== Hero ===== */
+/* ===== Hero (home) ===== */
 .hero {
   background: var(--card);
   border-radius: var(--radius);
@@ -231,7 +231,7 @@ body.dark .btn-outline {
   color: white;
 }
 
-/* ===== Highlights ===== */
+/* ===== Highlights (home) ===== */
 .highlights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -263,12 +263,13 @@ body.dark .btn-outline {
   margin: 4px 0 0;
 }
 
-/* ===== Card (used on About page) ===== */
+/* ===== Card ===== */
 .card {
   background: var(--card);
   padding: 30px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  margin-bottom: 24px;
 }
 
 .card h1,
@@ -281,83 +282,13 @@ body.dark .card h2 {
   color: var(--accent);
 }
 
-.card button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.card button:hover {
-  background: var(--accent);
+.card h3 {
   color: var(--primary);
+  margin: 18px 0 6px;
 }
 
-.hidden {
-  display: none;
-}
-
-/* ===== Footer ===== */
-footer {
-  background: var(--primary);
-  color: white;
-  text-align: center;
-  padding: 22px;
-  margin-top: 60px;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    padding-top: 15px;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .navbar {
-    flex-wrap: wrap;
-  }
-
-  .highlights {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    padding: 35px 25px;
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar {
-    padding: 12px 18px;
-  }
-
-  .hero h1 {
-    font-size: 1.6rem;
-  }
-
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-/* ===== Shared page styles ===== */
-.card {
-  margin-bottom: 24px;
+body.dark .card h3 {
+  color: var(--accent);
 }
 
 .card p,
@@ -380,10 +311,87 @@ footer {
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 30%;
   margin: 0 auto 20px;
   border: 4px solid var(--accent);
 }
 
+.card button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.card button:hover {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+/* ===== Timeline and chips ===== */
+.card .timeline {
+  list-style: none;
+  padding-left: 0;
+  border-left: 3px solid var(--accent);
+  margin-left: 8px;
+}
+
+.card .timeline li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 18px;
+}
+
+.card .timeline li::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+body.dark .card .timeline li::before {
+  background: var(--accent);
+}
+
+.card .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.card .chips li {
+  background: var(--bg);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+body.dark .card .chips li {
+  color: var(--accent);
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===== Shared page styles ===== */
 .page-header {
   text-align: center;
   margin-bottom: 30px;
@@ -395,22 +403,22 @@ footer {
   margin: 0 0 8px;
 }
 
+body.dark .page-header h1 {
+  color: var(--accent);
+}
+
 .page-header p {
   color: var(--muted);
   margin: 0;
 }
 
-body.dark .page-header h1,
-body.dark .card h1,
-body.dark .card h2,
-body.dark .project-body h3,
-body.dark .modal-content h2 {
-  color: var(--accent);
-}
-
 .section-title {
   color: var(--primary);
   margin-top: 0;
+}
+
+body.dark .section-title {
+  color: var(--accent);
 }
 
 .read-more-text {
@@ -535,6 +543,10 @@ tr:hover td {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
+.project-card.hidden {
+  display: none;
+}
+
 .project-thumb {
   height: 160px;
   display: flex;
@@ -546,6 +558,7 @@ tr:hover td {
 .thumb-1 { background: linear-gradient(135deg, #1e3a5f, #3b82f6); }
 .thumb-2 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
 .thumb-3 { background: linear-gradient(135deg, #10b981, #1e3a5f); }
+.thumb-4 { background: linear-gradient(135deg, #7c3aed, #1e3a5f); }
 
 .project-body {
   padding: 18px;
@@ -554,6 +567,10 @@ tr:hover td {
 .project-body h3 {
   color: var(--primary);
   margin: 0 0 6px;
+}
+
+body.dark .project-body h3 {
+  color: var(--accent);
 }
 
 .project-body p {
@@ -575,10 +592,6 @@ tr:hover td {
 
 body.dark .tag {
   color: var(--accent);
-}
-
-.project-card.hidden {
-  display: none;
 }
 
 /* ===== Modal ===== */
@@ -620,6 +633,10 @@ body.dark .tag {
   margin-top: 0;
 }
 
+body.dark .modal-content h2 {
+  color: var(--accent);
+}
+
 .modal-content p {
   margin: 8px 0;
 }
@@ -635,7 +652,7 @@ body.dark .tag {
   color: var(--text);
 }
 
-/* ===== Contact form ===== */
+/* ===== Contact ===== */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -742,8 +759,46 @@ body.dark .contact-list a {
   transform: translateY(-2px);
 }
 
-/* ===== Responsive additions ===== */
+/* ===== Footer ===== */
+footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 22px;
+  margin-top: 60px;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 15px;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 35px 25px;
+  }
+
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -758,6 +813,19 @@ body.dark .contact-list a {
 }
 
 @media (max-width: 480px) {
+  .navbar {
+    padding: 12px 18px;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
   .project-grid {
     grid-template-columns: 1fr;
   }
