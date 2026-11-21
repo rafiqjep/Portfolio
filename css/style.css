@@ -837,3 +837,9 @@ footer {
 #calculator {
   scroll-margin-top: 90px;
 }
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
